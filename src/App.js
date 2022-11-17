@@ -5,7 +5,7 @@ import PriceIndexes from "./container/PriceIndexes";
 
 function App() {
   return (
-    <Grid container>
+    <Grid container bgcolor="#f5f7fb">
       <Grid item xs={9}>
         <HourlyPriceChart />
       </Grid>
