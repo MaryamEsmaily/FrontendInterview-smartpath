@@ -16,6 +16,22 @@ function HourlyVolumeChart() {
     limit: 10,
   });
   //
+  useEffect(() => {
+    if (HourlyExchangeVol)
+      localStorage.setItem(
+        "HourlyExchangeVol",
+        JSON.stringify(HourlyExchangeVol)
+      );
+  }, [HourlyExchangeVol]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      localStorage.clear();
+    }, 360000);
+  }, []);
+  //
+
+  //
   const [showTime, setShowTime] = useState();
   //
   const handleChangeTime = (e) => {
@@ -23,18 +39,20 @@ function HourlyVolumeChart() {
   };
 
   useEffect(() => {
-    setShowTime(HourlyExchangeVol?.[0]?.time);
+    setShowTime(HourlyExchangeVol?.Data?.[0]?.time);
   }, [HourlyExchangeVol]);
 
   const data = useMemo(
-    () => HourlyExchangeVol?.filter((item) => item.time === +showTime) ?? [],
+    () =>
+      HourlyExchangeVol?.Data?.filter((item) => item.time === +showTime) ?? [],
     [HourlyExchangeVol, showTime]
   );
   //
   return (
     <Box
       height={500}
-      my={2}
+      mt={2}
+      mb={1}
       p={3}
       mx={1}
       borderRadius={4}
@@ -55,7 +73,7 @@ function HourlyVolumeChart() {
       </Box>
       <FormControl sx={{ textAlign: "center" }}>
         <RadioGroup row defaultValue="" name="radio-buttons-group">
-          {HourlyExchangeVol?.map((item) => (
+          {HourlyExchangeVol?.Data?.map((item) => (
             <FormControlLabel
               sx={{ m: 0.3 }}
               checked={item.time === +showTime}

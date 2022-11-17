@@ -12,7 +12,7 @@ const getHourlyExchangeVol = async ({ queryKey }) => {
   const { data } = await instance.get("/exchange/histohour", {
     params: params,
   });
-  return data?.Data;
+  return data;
 };
 
 export { getHourlyPairOHLCV, getHourlyExchangeVol };

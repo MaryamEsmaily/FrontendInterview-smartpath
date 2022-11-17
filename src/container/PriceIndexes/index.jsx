@@ -33,6 +33,8 @@ function PriceIndexes({ setBarChartKey }) {
     setBarChartKey(active);
   }, [setBarChartKey, state]);
 
+  const exchangeVol = JSON.parse(localStorage.getItem("HourlyExchangeVol"));
+
   return (
     <Box bgcolor="#fff" m={1} mt={0} px={5} py={1} borderRadius={4}>
       <Typography>Indexes</Typography>
@@ -107,13 +109,13 @@ function PriceIndexes({ setBarChartKey }) {
         <Box>
           <Typography color="#f24c4b" fontWeight="bold">
             Maximum Range: <br />
-            {} to {}
+            {exchangeVol?.TimeFrom ?? ""} to {exchangeVol?.TimeTo ?? ""}
           </Typography>
         </Box>
         <Box>
           <Typography color="#15b89b" fontWeight="bold">
             Minimum Range: <br />
-            {} to {}
+            {exchangeVol?.TimeFrom ?? ""} to {exchangeVol?.TimeTo ?? ""}
           </Typography>
         </Box>
       </Stack>
