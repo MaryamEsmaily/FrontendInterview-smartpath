@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHourlyPairOHLCV } from "api/api";
+import { getHourlyPairOHLCV, getHourlyExchangeVol } from "api/api";
 
 const useGetHourlyPairOHLCV = (params) => {
   return useQuery(["getHourlyPairOHLCV", params], getHourlyPairOHLCV, {
@@ -7,4 +7,10 @@ const useGetHourlyPairOHLCV = (params) => {
   });
 };
 
-export { useGetHourlyPairOHLCV };
+const useGetHourlyExchangeVol = (params) => {
+  return useQuery(["getHourlyExchangeVol", params], getHourlyExchangeVol, {
+    enabled: !!params,
+  });
+};
+
+export { useGetHourlyPairOHLCV, useGetHourlyExchangeVol };
