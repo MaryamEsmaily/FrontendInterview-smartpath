@@ -8,13 +8,13 @@ function App() {
   const [barChartKey, setBarChartKey] = useState([]);
   return (
     <Grid container>
-      <Grid item xs={12} lg={9}>
+      <Grid item order={0} xs={12} lg={8}>
         <HourlyPriceChart barChartKey={barChartKey} />
       </Grid>
-      <Grid item xs={12} lg={3}>
+      <Grid item order={{ xs: 2, md: 1 }} xs={12} md={5} lg={4}>
         <HourlyVolumeChart />
       </Grid>
-      <Grid item xs={12} lg={12}>
+      <Grid item xs={12} order={{ xs: 1, md: 2 }} md={7} lg={12}>
         <PriceIndexes setBarChartKey={setBarChartKey} />
       </Grid>
     </Grid>

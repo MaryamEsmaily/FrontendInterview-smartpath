@@ -36,12 +36,19 @@ function PriceIndexes({ setBarChartKey }) {
   const exchangeVol = JSON.parse(localStorage.getItem("HourlyExchangeVol"));
 
   return (
-    <Box bgcolor="#fff" m={1} mt={0} px={5} py={1} borderRadius={4}>
+    <Box
+      bgcolor="#fff"
+      m={1}
+      mt={0}
+      px={{ xs: 2, lg: 5 }}
+      py={1}
+      borderRadius={4}
+    >
       <Typography>Indexes</Typography>
       <Stack
         m={3}
         direction={{ xs: "column", md: "row" }}
-        alignItems="center"
+        alignItems={{ xs: "", md: "center" }}
         justifyContent="space-around"
         spacing={3}
       >

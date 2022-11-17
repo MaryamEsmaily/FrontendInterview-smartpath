@@ -28,12 +28,12 @@ function HourlyPriceChart({ barChartKey }) {
   return (
     <Box
       height={500}
-      mt={2}
-      mb={1}
       mx={1}
       p={3}
+      my={2}
       borderRadius={4}
       bgcolor="#fff"
+      overflow="auto"
     >
       {barChartKey.length ? (
         <BarChart colors={getColor} data={data} keys={barChartKey} />

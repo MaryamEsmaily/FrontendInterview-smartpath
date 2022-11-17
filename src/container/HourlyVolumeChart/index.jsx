@@ -51,10 +51,10 @@ function HourlyVolumeChart() {
   return (
     <Box
       height={500}
-      mt={2}
-      mb={1}
       p={3}
       mx={1}
+      mb={2}
+      mt={{ base: 0, lg: 2 }}
       borderRadius={4}
       bgcolor="#fff"
       sx={{ textAlign: "center" }}
@@ -63,7 +63,7 @@ function HourlyVolumeChart() {
         Market Volume of
         <br /> {showTime}
       </Typography>
-      <Box sx={{ "& div": { height: "420px!important" } }}>
+      <Box sx={{ "& div": { height: "370px!important" } }}>
         <BarChart
           padding={0.8}
           colors={"#15b89b"}
