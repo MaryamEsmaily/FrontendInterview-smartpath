@@ -7,15 +7,15 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CircleIcon from "@mui/icons-material/Circle";
 
-function PriceIndexes() {
+function PriceIndexes({ setBarChartKey }) {
   const [state, setState] = useState({
-    low: true,
     high: true,
     average: true,
+    low: true,
   });
 
   const handleChange = (event) => {
@@ -24,6 +24,14 @@ function PriceIndexes() {
       [event.target.name]: event.target.checked,
     });
   };
+
+  useEffect(() => {
+    const activeKeys = Object.keys(state);
+    const active = activeKeys.filter(function (id) {
+      return state[id];
+    });
+    setBarChartKey(active);
+  }, [setBarChartKey, state]);
 
   return (
     <Box bgcolor="#fff" m={1} mt={0} px={5} py={1} borderRadius={4}>

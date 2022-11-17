@@ -3,8 +3,9 @@ import { Box } from "@mui/system";
 import { useGetHourlyPairOHLCV } from "hook/api/useApi";
 import calculateAverage from "utils/calculateAverage";
 import BarChart from "component/BarChart";
+import { Stack, Typography } from "@mui/material";
 
-function HourlyPriceChart() {
+function HourlyPriceChart({ barChartKey }) {
   //
   const { data: HourlyPairOHLCV } = useGetHourlyPairOHLCV({
     fsym: "BTC",
@@ -21,13 +22,31 @@ function HourlyPriceChart() {
     [HourlyPairOHLCV]
   );
   //
+  const colors = { high: "#15b89b", average: "#ffd967", low: "#f24c4b" };
+  const getColor = (bar) => colors[bar.id];
+  //
   return (
-    <Box height={500} my={2} mx={1} p={3} borderRadius={4} bgcolor="#fff">
-      <BarChart
-        colors={["#15b89b", "#ffd967", "#f24c4b"]}
-        data={data}
-        keys={["high", "average", "low"]}
-      />
+    <Box
+      height={500}
+      mt={2}
+      mb={1}
+      mx={1}
+      p={3}
+      borderRadius={4}
+      bgcolor="#fff"
+    >
+      {barChartKey.length ? (
+        <BarChart colors={getColor} data={data} keys={barChartKey} />
+      ) : (
+        <Stack
+          height="100%"
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Typography fontWeight="bold">There is no data </Typography>
+        </Stack>
+      )}
     </Box>
   );
 }
