@@ -7,7 +7,7 @@ import PriceIndexes from "./container/PriceIndexes";
 function App() {
   const [barChartKey, setBarChartKey] = useState([]);
   return (
-    <Grid container bgcolor="#f5f7fb">
+    <Grid container>
       <Grid item xs={12} lg={9}>
         <HourlyPriceChart barChartKey={barChartKey} />
       </Grid>
